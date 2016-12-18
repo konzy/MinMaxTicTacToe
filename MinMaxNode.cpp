@@ -18,9 +18,10 @@ MinMaxNode::MinMaxNode(const Game &gameBoard, MinMaxNode *parent, int move) : ga
 void MinMaxNode::createTree(Game gameBoard) {
     //Tree creation
     if (gameBoard.checkWin() == CONTINUE) {
-        Game tempBoard(gameBoard);
-        tempBoard.changePlayers();
+
         for (int move = 0; move < 9; ++move) {
+            Game tempBoard(gameBoard);
+            tempBoard.changePlayers();
             char currentBoxValue = gameBoard.getBoard()[move];
             if (currentBoxValue != 'X' && currentBoxValue != 'O') {
                 vector<char> tempCharBoard = tempBoard.getBoard();
@@ -30,13 +31,14 @@ void MinMaxNode::createTree(Game gameBoard) {
                 possibleMoves.push_back(node);
             }
         }
+
         if (gameBoard.getCurrentPlayer() == CPU) {
             for (auto it = begin(possibleMoves); it < end(possibleMoves); ++it) {
-                value = max(it.base()->value, value);
+                value = max(it.base()->value + 1, value);
             }
         } else {
             for (auto it = begin(possibleMoves); it < end(possibleMoves); ++it) {
-                value = min(it.base()->value, value);
+                value = min(it.base()->value - 1, value);
             }
         }
     } else { // WIN, LOSE, or DRAW -- we are at the leaf node
