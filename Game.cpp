@@ -3,7 +3,7 @@
 //
 
 #include "Game.h"
-
+#include "MinMaxNode.h"
 
 Game::Game(const vector<char> &board, int currentPlayer) : board(board), currentPlayer(currentPlayer) {}
 

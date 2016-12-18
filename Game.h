@@ -16,8 +16,6 @@
 #include <vector>
 #include <string>
 
-#include "MinMaxNode.h"
-
 using namespace std;
 
 class Game {

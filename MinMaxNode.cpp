@@ -67,10 +67,6 @@ int MinMaxNode::getValue() const {
     return value;
 }
 
-void MinMaxNode::setValue(int value) {
-    MinMaxNode::value = value;
-}
-
 MinMaxNode::MinMaxNode(const Game &gameBoard) : gameBoard(gameBoard) {
     createTree(gameBoard);
 }
