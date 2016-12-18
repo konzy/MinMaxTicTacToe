@@ -8,7 +8,6 @@
  */
 
 #include <iostream>
-#include "AI.h"
 #include "Game.h"
 using namespace std;
 

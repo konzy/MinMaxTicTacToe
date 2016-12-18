@@ -18,16 +18,9 @@ class MinMaxNode {
     int move;
 public:
     int getValue() const;
-
-    void setValue(int value);
-
-public:
     MinMaxNode(const Game &gameBoard, MinMaxNode *parent, int move);
-
     MinMaxNode(const Game &gameBoard);
-
     void createTree(Game gameBoard);
-
     int bestMove();
 };
 

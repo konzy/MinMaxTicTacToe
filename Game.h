@@ -16,6 +16,8 @@
 #include <vector>
 #include <string>
 
+#include "MinMaxNode.h"
+
 using namespace std;
 
 class Game {
@@ -30,13 +32,9 @@ public:
     void runGame();
     bool isValidMove(int);
     void changePlayers();
-    int aiMove();
     char currentPlayerSymbol();
-
     void setBoard(const vector<char> &board);
-
     const vector<char> &getBoard() const;
-
     int getCurrentPlayer() const;
 };
 

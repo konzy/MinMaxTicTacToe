@@ -3,8 +3,7 @@
 //
 
 #include "Game.h"
-#include "AI.h"
-#include "MinMaxNode.h"
+
 
 Game::Game(const vector<char> &board, int currentPlayer) : board(board), currentPlayer(currentPlayer) {}
 
@@ -32,7 +31,7 @@ const int Game::checkWin() const {
 void Game::drawBoard() {
     cout << endl << endl << " Get Ready to Play Tic Tac Toe " << endl << endl;
 
-    cout << "Player 1 (X)  -  Player 2 (O)" << endl << endl;
+    cout << "Player 1 (X)  -  CPU (O)" << endl << endl;
 
     cout << "       |       |       " << endl;
 
@@ -73,7 +72,7 @@ void Game::runGame() {
     drawBoard();
 
     if (checkWin() == WIN)
-        cout << "~~~Player " << --currentPlayer << "Won";
+        cout << "~~~CPU Won";
     else
         cout << "~~~Game Draw!";
 
@@ -89,12 +88,6 @@ void Game::changePlayers() {
     currentPlayer = currentPlayer % 2 ? 2 : 1;
 }
 
-//int Game::aiMove() {
-//    AI ai();
-//    return ai.minimax();
-//
-//}
-
 char Game::currentPlayerSymbol() {
     return currentPlayer == 1 ? 'X' : 'O';
 }
@@ -105,10 +98,6 @@ const vector<char> &Game::getBoard() const {
 
 int Game::getCurrentPlayer() const {
     return currentPlayer;
-}
-
-int Game::aiMove() {
-    return 0;
 }
 
 Game::Game(const Game &rhs) {
