@@ -34,26 +34,26 @@ void MinMaxNode::createTree(Game gameBoard) {
 
         if (gameBoard.getCurrentPlayer() == CPU) {
             for (auto it = begin(possibleMoves); it < end(possibleMoves); ++it) {
-                value = max(it.base()->value + 1, value);
+                value = max(it.base()->value - 1, value);
             }
         } else {
             for (auto it = begin(possibleMoves); it < end(possibleMoves); ++it) {
-                value = min(it.base()->value - 1, value);
+                value = min(it.base()->value + 1, value);
             }
         }
     } else { // WIN, LOSE, or DRAW -- we are at the leaf node
         if (gameBoard.getCurrentPlayer() == CPU) {
-            value = gameBoard.checkWin();
+            value = gameBoard.checkWin() * 10;
         } else {
-            value = -gameBoard.checkWin();
+            value = -gameBoard.checkWin() * 10;
         }
     }
 
 }
 
 int MinMaxNode::bestMove() {
-    int result = -1;
-    int bestValue = -1;
+    int result = -1000;
+    int bestValue = -1000;
     for (auto it = begin(possibleMoves); it < end(possibleMoves); ++it) {
         if (it.base()->value > bestValue) {
             result = it.base()->move;
